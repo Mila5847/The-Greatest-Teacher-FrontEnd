@@ -2,9 +2,11 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
 import Course from "./Course";
+import { useForm } from "react-hook-form";
 
 function CourseList({ teacherId, display }) {
   const [courses, setCourses] = useState([]);
+
   useEffect(() => {
     axios
       .get("http://localhost:8080/api/courses/" + teacherId, {})
@@ -16,6 +18,7 @@ function CourseList({ teacherId, display }) {
       })
       .catch((error) => {});
   }, []);
+
 
   return (
     <>

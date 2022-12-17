@@ -6,17 +6,11 @@ import "./index.css";
 import axios from "axios";
 
 function App() {
-  /*const {
+  const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      courseName: ""
-    },
-  });*/
+  } = useForm({});
 
   return (
     <div>
@@ -25,7 +19,7 @@ function App() {
         <div class="float-left">
           <TeacherList />
         </div>
-        {/*<div class="float-right">
+        {<div class="float-right">
           <form onSubmit={handleSubmit((onSubmit) => {})}>
             <div className="input-container">
               <input
@@ -56,10 +50,10 @@ function App() {
                 })}
               />
               <p>{errors.lastName?.message}</p>
-              <button className="submit">Add Teacher</button>
+              <button className="submit">Add Course To Teacher</button>
             </div>
           </form>
-              </div>*/}
+              </div>}
       </div>
     </div>
   );
