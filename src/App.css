@@ -1,95 +1,95 @@
-  h1{
-    color: black;
-    text-align: center;
-  }
-  
-  .buttonTeacher {
-    background-color: #ff7f50;
-    border: 2px solid #ff7f50;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    min-width: 200px;
-  }
+h1 {
+  color: black;
+  text-align: center;
+}
 
-  .buttonCourse {
-    background-color:cornflowerblue;
-    border: 2px solid cornflowerblue;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
-    cursor: pointer;
-    min-width: 200px;
-  }
- 
-  .buttonTeacher:hover {
-    background-color: #ffe5b4; 
-    color: #ff7f50; 
-  }
+.buttonTeacher {
+  background-color: #ff7f50;
+  border: 2px solid #ff7f50;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  min-width: 200px;
+}
 
-  p {
-    font-size: 15px;
-    height: 34px;
-  }
+.buttonCourse {
+  background-color: cornflowerblue;
+  border: 2px solid cornflowerblue;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  min-width: 200px;
+}
 
-  .pTeachers {
-    height: 0px;
-  }
+.buttonTeacher:hover {
+  background-color: #ffe5b4;
+  color: #ff7f50;
+}
 
-  form {
-    background-color: #15172b;
-    border-radius: 20px;
-    box-sizing: border-box;
-    height: 315px;
-    padding: 20px;
-    width: 320px;
-  }
-  .input-container {
-    height: 50px;
-    position: relative;
-    width: 100%;
-  }
+p {
+  font-size: 15px;
+  height: 34px;
+}
 
-  .input {
-    background-color: #303245;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: white;
-    font-size: 18px;
-    height: 100%;
-    outline: 0;
-    padding: 5px 10px 5px;
-    width: 100%;
-  }
+.pTeachers {
+  height: 0px;
+}
 
-  .submit {
-    background-color: #08d;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    cursor: pointer;
-    font-size: 18px;
-    height: 50px;
-    text-align: center;
-    width: 100%;
-  }
+form {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 315px;
+  padding: 20px;
+  width: 320px;
+}
+.input-container {
+  height: 50px;
+  position: relative;
+  width: 100%;
+}
 
-  .float-container {
-    border: 3px solid #fff;
-    padding: 20px;
+.input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: white;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 5px 10px 5px;
+  width: 100%;
+}
+
+.submit {
+  background-color: #08d;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  text-align: center;
+  width: 100%;
+}
+
+.float-container {
+  border: 3px solid #fff;
+  padding: 20px;
 }
 
 .float-left {
@@ -97,12 +97,19 @@
   float: left;
   display: inline-flex;
   margin: 56px 0px 0px 35px;
-} 
+}
 
 .float-right {
   width: 25%;
   float: right;
   display: inline-flex;
-  margin: -64px 0px 0px -64px;
+  margin: 56px 0px 0px 35px;
 }
-  
+
+.teachers {
+  margin-left: 50px;
+}
+.courses {
+  display: list-item;
+  margin-left: 199px;
+}

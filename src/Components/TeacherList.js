@@ -2,37 +2,110 @@ import Teacher from "./Teacher";
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 function TeacherList() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => console.log(data);
+
   const [teachers, setTeachers] = useState([]);
 
-  useEffect(()=>{
-    axios.get("http://localhost:8080/api/teachers", {})
-    .then((response) => {
-      if (response.status === 200) {
-        console.log(response.data)
-        setTeachers(response.data)
-      }
-    })
-    .catch((error) => {
-    });
-  }, [])
+  const loadTeachers = () => {
+    axios
+      .get("http://localhost:8080/api/teachers")
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response.data);
+          setTeachers(response.data);
+        }
+      })
+      .catch((error) => {});
+  };
 
-    return (
-      <>
-        <div>
-          {teachers.map((teacher) => {
-              return (
-                <Teacher
-                teacherId={teacher.id}
-                teacherName={teacher.fullName}
-                ></Teacher>
-              );
-            })}
-        </div>
-      </>
-    );
-  }
-  
-  export default TeacherList;
-  
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/teachers")
+      .then((response) => {
+        if (response.status === 200) {
+          setTeachers(response.data);
+        }
+      })
+      .catch((error) => {});
+  });
+
+  const handleTeacherForm = (data) => {
+    console.log(data);
+    const firstNameTeacher = data.firstName;
+    const lastNameTeacher = data.lastName;
+    console.log(firstNameTeacher + lastNameTeacher);
+    const teacher = { firstName: firstNameTeacher, lastName: lastNameTeacher };
+    console.log(teacher);
+    addTeacher(teacher);
+  };
+
+  const addTeacher = (teacher) => {
+    axios
+      .post("http://localhost:8080/api/teachers", teacher)
+      .then(function (response) {
+        loadTeachers();
+      })
+      .catch(function (error) {});
+  };
+
+  return (
+    <>
+      <div>
+        <form onSubmit={handleSubmit(handleTeacherForm)}>
+          <div className="input-container">
+            <input
+              class="input"
+              type="text"
+              name="firstName"
+              placeholder="First name"
+              {...register("firstName", {
+                required: "Required field.",
+                minLength: {
+                  value: 2,
+                  message: "The input's minimum length is 2 characters",
+                },
+                maxLength: 100,
+              })}
+            />
+            <p>{errors.firstName?.message}</p>
+            <input
+              class="input"
+              type="text"
+              name="lastName"
+              placeholder="Last name"
+              {...register("lastName", {
+                required: "Required field.",
+                minLength: {
+                  value: 2,
+                  message: "The input's minimum length is 2 characters",
+                },
+                maxLength: 100,
+              })}
+            />
+            <p>{errors.lastName?.message}</p>
+            <button className="submit">Add Teacher</button>
+          </div>
+        </form>
+      </div>
+      <div className="teachers">
+        {teachers.map((teacher) => {
+          return (
+            <Teacher
+              teacherId={teacher.id}
+              teacherName={teacher.fullName}
+            ></Teacher>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+export default TeacherList;
