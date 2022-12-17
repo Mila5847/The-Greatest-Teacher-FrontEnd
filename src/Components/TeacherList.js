@@ -7,9 +7,14 @@ import { useForm } from "react-hook-form";
 function TeacherList() {
   const {
     register,
-    handleSubmit,
+    handleSubmit, reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues:{
+      firstName: "",
+      lastName: ""
+    }
+  });
   const onSubmit = (data) => console.log(data);
 
   const [teachers, setTeachers] = useState([]);
@@ -45,6 +50,7 @@ function TeacherList() {
     const teacher = { firstName: firstNameTeacher, lastName: lastNameTeacher };
     console.log(teacher);
     addTeacher(teacher);
+    reset();
   };
 
   const addTeacher = (teacher) => {
@@ -59,7 +65,7 @@ function TeacherList() {
   return (
     <>
       <div>
-        <form onSubmit={handleSubmit(handleTeacherForm)}>
+        <form className="teacherForm" onSubmit={handleSubmit(handleTeacherForm)}>
           <div className="input-container">
             <input
               class="input"

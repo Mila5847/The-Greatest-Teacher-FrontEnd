@@ -19,7 +19,7 @@ function App() {
         <div class="float-left">
           <TeacherList />
         </div>
-        {<div class="float-right">
+        {/*<div class="float-right">
           <form onSubmit={handleSubmit((onSubmit) => {})}>
             <div className="input-container">
               <input
@@ -53,7 +53,7 @@ function App() {
               <button className="submit">Add Course To Teacher</button>
             </div>
           </form>
-              </div>}
+              </div>*/}
       </div>
     </div>
   );

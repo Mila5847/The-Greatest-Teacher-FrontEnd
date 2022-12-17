@@ -27,20 +27,17 @@ function Teacher({ teacherId, teacherName }) {
           className="buttonTeacher"
           onClick={() => {
             setDisplayMode(!display)
-            App(teacherId, )
+            
           }}
         >
           {teacherName}
-        </button>{" "}
+        </button>
         <br />
         {display ? (
           <div>
-            <div className="courses">
               <CourseList
                 teacherId={teacherId}
-                displayCourses={display}
-              ></CourseList>{" "}
-            </div>
+              ></CourseList>
           </div>
         ) : (
           ""

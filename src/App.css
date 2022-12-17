@@ -47,7 +47,7 @@ p {
   height: 0px;
 }
 
-form {
+.teacherForm {
   background-color: #15172b;
   border-radius: 20px;
   box-sizing: border-box;
@@ -55,6 +55,16 @@ form {
   padding: 20px;
   width: 320px;
 }
+
+.courseForm {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 205px;
+  padding: 20px;
+  width: 320px;
+}
+
 .input-container {
   height: 50px;
   position: relative;
