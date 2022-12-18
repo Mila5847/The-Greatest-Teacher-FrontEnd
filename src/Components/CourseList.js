@@ -81,9 +81,11 @@ function CourseList({ teacherId}) {
               <button className="submit">Add Course To Teacher</button>
             </div>
           </form>
+          <div className="courses">
       {courses.map((course) => {
-        return <div className="courses"><Course courseName={course.name}></Course></div>;
+        return <div className="course"><Course courseName={course.name} courseId={course.id} ></Course></div>;
       })}
+      </div>
     </div>
   );
 }

@@ -5,19 +5,7 @@ import CourseList from "./CourseList.js";
 import { useForm } from "react-hook-form";
 import App from "../App.js";
 
-
 function Teacher({ teacherId, teacherName }) {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      courseName: ""
-    },
-  });
   const [display, setDisplayMode] = useState(false);
 
   return (
@@ -32,7 +20,6 @@ function Teacher({ teacherId, teacherName }) {
         >
           {teacherName}
         </button>
-        <br />
         {display ? (
           <div>
               <CourseList

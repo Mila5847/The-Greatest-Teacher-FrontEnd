@@ -38,6 +38,11 @@ h1 {
   color: #ff7f50;
 }
 
+.buttonCourse:hover {
+  background-color:lightblue;
+  color:darkblue;
+}
+
 p {
   font-size: 15px;
   height: 34px;
@@ -63,6 +68,7 @@ p {
   height: 205px;
   padding: 20px;
   width: 320px;
+  margin: -68px 20px 20px 285px;
 }
 
 .input-container {
@@ -72,6 +78,19 @@ p {
 }
 
 .input {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: white;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  padding: 5px 10px 5px;
+  width: 100%;
+}
+
+.scoreInput {
   background-color: #303245;
   border-radius: 12px;
   border: 0;
@@ -119,7 +138,11 @@ p {
 .teachers {
   margin-left: 50px;
 }
-.courses {
+.course {
   display: list-item;
   margin-left: 199px;
+}
+
+.courses {
+  margin: -222px 20px 20px 480px;
 }
