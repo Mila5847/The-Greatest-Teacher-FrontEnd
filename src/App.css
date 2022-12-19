@@ -59,6 +59,7 @@ p {
   height: 315px;
   padding: 20px;
   width: 320px;
+
 }
 
 .courseForm {
@@ -122,21 +123,23 @@ p {
 }
 
 .float-left {
-  width: 25%;
+  width: 50%;
   float: left;
   display: inline-flex;
   margin: 56px 0px 0px 35px;
 }
 
 .float-right {
-  width: 25%;
+  width: 50%;
   float: right;
   display: inline-flex;
   margin: 56px 0px 0px 35px;
 }
 
 .teachers {
-  margin-left: 50px;
+
+  margin: 20px;
+
 }
 .course {
   display: list-item;

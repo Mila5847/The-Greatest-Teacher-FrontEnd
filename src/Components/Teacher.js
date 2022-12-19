@@ -15,7 +15,6 @@ function Teacher({ teacherId, teacherName }) {
           className="buttonTeacher"
           onClick={() => {
             setDisplayMode(!display)
-            
           }}
         >
           {teacherName}

@@ -3,61 +3,23 @@ import TeacherList from "./Components/TeacherList";
 import { useForm } from "react-hook-form";
 import React from "react";
 import "./index.css";
-import axios from "axios";
+import BarChart from "./Components/BarChart";
+import { Chart as ChartJS } from 'chart.js/auto'
+import { Chart }            from 'react-chartjs-2'
 
 function App() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm({});
+  const teachers = ["dfgt", "fvgrht"];
 
   return (
     <div>
       <h1>The Greatest Teacher</h1>
+      <div class="float-left">
+        <TeacherList />
+      </div>
       <div>
-        <div class="float-left">
-          <TeacherList />
-        </div>
-
-        {/*<div class="float-right">
-          <form onSubmit={handleSubmit((onSubmit) => {})}>
-            <div className="input-container">
-              <input
-                class="input"
-                type="text"
-                placeholder="First name"
-                {...register("firstName", {
-                  required: "Required field.",
-                  minLength: {
-                    value: 2,
-                    message: "The input's minimum length is 2 characters",
-                  },
-                  maxLength: 100,
-                })}
-              />
-              <p>{errors.firstName?.message}</p>
-              <input
-                class="input"
-                type="text"
-                placeholder="Last name"
-                {...register("lastName", {
-                  required: "Required field.",
-                  minLength: {
-                    value: 2,
-                    message: "The input's minimum length is 2 characters",
-                  },
-                  maxLength: 100,
-                })}
-              />
-              <p>{errors.lastName?.message}</p>
-              <button className="submit">Add Course To Teacher</button>
-            </div>
-          </form>
-              </div>*/}
+        <BarChart teachers={teachers}/>
       </div>
     </div>
   );
 }
-
 export default App;
