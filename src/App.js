@@ -15,56 +15,63 @@ import axios from "axios";
 
 function App() {
 
-  const [showRatings, setShowRatings] = useState(false);
-  
-  const [scores, setScores] = useState([]);
-  const [teachers, setTeachers] = useState([]);
+  const [showRatings, setShowRatings] = useState(true);
+  const scoresList = [];
+  const teachersList = [];
 
-  axios
-      .get("http://localhost:8080/api/scores")
-      .then((response) => {
-        if (response.status === 200) {
-          for(let i = 0; i < response.data.length; i++){
-            const updatedListOfTeachers = [
-              ...teachers,
-              {},
-            ];
-            setTeachers(updatedListOfTeachers);
-          }
-          /*setScores(response.data[0].overallScore);
-          console.log(response.data[0].overallScore);
-          setTeachers(response.data[0].fullName);
-          console.log(response.data[0].fullName);*/
-        }
-      })
-      .catch((error) => {});
+  const displayDiagram = () => {
+    axios
+    .get("http://localhost:8080/api/scores")
+    .then((response) => {
+      if (response.status === 200) {
+       for (let i = 0; i < response.data.length; i++){
+        scoresList.push(response.data[i].overallScore);
+        console.log(scoresList);
+        teachersList.push(response.data[i].fullName);
+        console.log(teachersList);
+       }
+      }
+      setChartData({
+        labels:teachersList.map((teacher) => teacher),
+        datasets:[{
+            backgroundColor: "rgb(0,0,255)",
+            borderColor: "rgba(255, 159, 64, 0.2)",
+            borderWidth: 2,
+            data:scoresList.map((score) => score)
+        }]
+    })
+    })
+    .catch((error) => {});
+  };
 
   const [chartData, setChartData] = useState({
-    labels: teachers.map((teacher) => teacher), 
+    labels: teachersList.map((teacher) => teacher), 
     datasets: [
       {
-        label: "Users Gained ",
-        data: scores.map((score) => score.overallScore),
+        label: "Teachers",
+        data: scoresList.map((score) => score),
         backgroundColor: [
-            "rgba(255, 99, 132, 0.2)",
-            "rgba(255, 159, 64, 0.2)",
-            "rgba(255, 205, 86, 0.2)",
-            "rgba(75, 192, 192, 0.2)",
-            "rgba(54, 162, 235, 0.2)",
-            "rgba(153, 102, 255, 0.2)",
+            "rgb(0,0,255)",
           ],
           borderColor: [
             "rgb(255, 99, 132)",
-            "rgb(255, 159, 64)",
-            "rgb(255, 205, 86)",
-            "rgb(75, 192, 192)",
-            "rgb(54, 162, 235)",
-            "rgb(153, 102, 255)",
           ],
           borderWidth: 2,
       }
     ]
-  });
+  })
+
+  /*useEffect(() => {
+    setChartData({
+        labels:teachersList.map((teacher) => teacher),
+        datasets:[{
+            backgroundColor: 'rgba(75,192,192,1)',
+            borderColor: 'rgba(0,0,0,1)',
+            borderWidth: 2,
+            data:scoresList.map((score) => score)
+        }]
+    })
+  }, [chartData, setChartData]);*/
 
   return (
     <div>
@@ -73,7 +80,7 @@ function App() {
         <TeacherList/>
       </div>
       <div className="float-left">
-      <button className="buttonRatings" onClick={() => setShowRatings(!showRatings)}>Show Teachers' Ratings</button>
+      <button className="buttonRatings" onClick={() => {displayDiagram()}}>Show Teachers' Ratings</button>
       </div>
       {showRatings && <BarChart chartData={chartData} /> }
     </div>
