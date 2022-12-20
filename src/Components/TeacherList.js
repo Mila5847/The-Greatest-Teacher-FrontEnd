@@ -62,6 +62,15 @@ function TeacherList() {
       .catch(function (error) {});
   };
 
+  const deleteTeacher = (teacher) => {
+    axios
+      .delete("http://localhost:8080/api/teachers/" + teacher.id)
+      .then(function (response) {
+        loadTeachers();
+      })
+      .catch(function (error) {});
+  };
+
   return (
     <>
       <div>
@@ -105,8 +114,10 @@ function TeacherList() {
         {teachers.map((teacher) => {
           return (
             <Teacher
+              teacher={teacher}
               teacherId={teacher.id}
               teacherName={teacher.fullName}
+              deleteTeacher={deleteTeacher}
             ></Teacher>
           );
         })}

@@ -18,7 +18,7 @@ function Course({courseName, courseId}) {
       {courseName}
     </button>
       {display ? (
-        <ScoreList courseId={courseId}></ScoreList>
+        <ScoreList courseId={courseId} courseName={courseName}></ScoreList>
         ) : (
           ""
         )}

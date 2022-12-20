@@ -5,12 +5,12 @@ import CourseList from "./CourseList.js";
 import { useForm } from "react-hook-form";
 import App from "../App.js";
 
-function Teacher({ teacherId, teacherName }) {
+function Teacher({ teacher, teacherId, teacherName, deleteTeacher }) {
   const [display, setDisplayMode] = useState(false);
-
   return (
     <>
       <div>
+      <button class="deleteButton" onClick={() => {deleteTeacher(teacher)}}>X</button>
         <button
           className="buttonTeacher"
           onClick={() => {
@@ -23,6 +23,7 @@ function Teacher({ teacherId, teacherName }) {
           <div>
               <CourseList
                 teacherId={teacherId}
+                teacherName={teacherName}
               ></CourseList>
           </div>
         ) : (

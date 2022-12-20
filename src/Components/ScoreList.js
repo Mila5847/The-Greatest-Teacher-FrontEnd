@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-function ScoreList({ courseId}) {
+function ScoreList({ courseId, courseName}) {
   const {
     register,
     handleSubmit,
@@ -50,8 +50,10 @@ function ScoreList({ courseId}) {
             message: "Please input a number between 0 and 100",
           },})}
         />
-        <p>{errors.Score?.message}</p>
-        <button className="submit">Add Teacher</button>
+        <p class="courseErrorMessage">{errors.Score?.message}</p>
+        <button className="submit">Add Score To {courseName}</button>
+        <br/>
+        <br/>
       </form>
     </div>
   );

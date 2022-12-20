@@ -3,6 +3,18 @@ h1 {
   text-align: center;
 }
 
+.deleteButton {
+  background-color: #ff7f50;
+  border: #ff7f50;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
 .buttonTeacher {
   background-color: #ff7f50;
   border: 2px solid #ff7f50;
@@ -15,7 +27,8 @@ h1 {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  min-width: 200px;
+  min-width: 250px;
+  max-inline-size: 250px;
 }
 
 .buttonCourse {
@@ -33,6 +46,11 @@ h1 {
   min-width: 200px;
 }
 
+.deleteButton:hover{
+  background-color: darkblue;
+  color: #ff7f50;
+}
+
 .buttonTeacher:hover {
   background-color: #ffe5b4;
   color: #ff7f50;
@@ -41,6 +59,26 @@ h1 {
 .buttonCourse:hover {
   background-color:lightblue;
   color:darkblue;
+}
+
+.buttonRatings:hover {
+  background-color:greenyellow;
+  color:green;
+}
+
+.buttonRatings {
+  background-color: green;
+  border: 2px solid green;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  min-width: 200px;
 }
 
 p {
@@ -69,7 +107,7 @@ p {
   height: 205px;
   padding: 20px;
   width: 320px;
-  margin: -68px 20px 20px 285px;
+  margin: 1px 20px 20px 285px;
 }
 
 .input-container {
@@ -148,4 +186,9 @@ p {
 
 .courses {
   margin: -222px 20px 20px 480px;
+}
+
+.courseErrorMessage {
+  color: black;
+  margin-top: 1px;
 }

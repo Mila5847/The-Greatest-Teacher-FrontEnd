@@ -4,7 +4,7 @@ import { useState } from "react";
 import Course from "./Course";
 import { useForm } from "react-hook-form";
 
-function CourseList({ teacherId}) {
+function CourseList({ teacherId, teacherName}) {
   const {
     register,
     handleSubmit, reset,
@@ -78,7 +78,7 @@ function CourseList({ teacherId}) {
                 })}
               />
               <p>{errors.courseName?.message}</p>
-              <button className="submit">Add Course To Teacher</button>
+              <button className="submit">Add Course To {teacherName}</button>
             </div>
           </form>
           <div className="courses">
