@@ -15,9 +15,9 @@ function TeacherList() {
       lastName: ""
     }
   });
-  const onSubmit = (data) => console.log(data);
 
   const [teachers, setTeachers] = useState([]);
+  const [clickedTeacher, setclickedTeacher] = useState(false);
 
   const loadTeachers = () => {
     axios
@@ -113,12 +113,15 @@ function TeacherList() {
       <div className="teachers">
         {teachers.map((teacher) => {
           return (
-            <Teacher
+            <div onClick={(() => {
+              setclickedTeacher(true);
+            })}><Teacher
               teacher={teacher}
               teacherId={teacher.id}
               teacherName={teacher.fullName}
               deleteTeacher={deleteTeacher}
-            ></Teacher>
+              isClicked={clickedTeacher}
+            ></Teacher></div>
           );
         })}
       </div>

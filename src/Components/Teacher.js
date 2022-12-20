@@ -1,16 +1,17 @@
-import { useEffect } from "react";
+import { Component, useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
 import CourseList from "./CourseList.js";
 import { useForm } from "react-hook-form";
 import App from "../App.js";
 
-function Teacher({ teacher, teacherId, teacherName, deleteTeacher }) {
+function Teacher({ teacher, teacherId, teacherName, deleteTeacher, isClicked }) {
   const [display, setDisplayMode] = useState(false);
+
   return (
     <>
       <div>
-      <button class="deleteButton" onClick={() => {deleteTeacher(teacher)}}>X</button>
+      <button className="deleteButton" onClick={() => {deleteTeacher(teacher)}}>X</button>
         <button
           className="buttonTeacher"
           onClick={() => {
@@ -19,8 +20,8 @@ function Teacher({ teacher, teacherId, teacherName, deleteTeacher }) {
         >
           {teacherName}
         </button>
-        {display ? (
-          <div>
+        {display  ? (
+          <div className={`course-list course-list-${teacherId}`}>
               <CourseList
                 teacherId={teacherId}
                 teacherName={teacherName}
@@ -29,6 +30,7 @@ function Teacher({ teacher, teacherId, teacherName, deleteTeacher }) {
         ) : (
           ""
         )}
+        
       </div>
     </>
   );
