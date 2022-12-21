@@ -6,16 +6,34 @@ import { useForm } from "react-hook-form";
 import App from "../App.js";
 import "./Teacher.css";
 
-function Teacher({ teacher, teacherId, teacherName, deleteTeacher, isClicked }) {
+function Teacher({
+  teacher,
+  teacherId,
+  teacherName,
+  deleteTeacher,
+  id,
+  selectedItem,
+  setSelectedItem,
+}) {
   const [display, setDisplayMode] = useState(false);
 
   return (
     <>
       <div>
-      <button className="deleteButton" onClick={() => {deleteTeacher(teacher)}}>X</button>
+        <button
+          className="deleteButton"
+          onClick={() => {
+            deleteTeacher(teacher);
+          }}
+        >
+          X
+        </button>
         <button
           className="buttonTeacher"
-          onClick={(e) => {
+          onClick={() => {
+            setSelectedItem(id);
+          }}
+          /*onClick={(e) => {
             setDisplayMode(!display);
             let teachersDiv = e.target.parentElement.parentElement.parentElement;
             let courseListElements = teachersDiv.querySelectorAll(".course-list");
@@ -32,21 +50,30 @@ function Teacher({ teacher, teacherId, teacherName, deleteTeacher, isClicked }) 
               }
             }
             console.log(e.target.parentElement);
-          }}
+          }}*/
         >
           {teacherName}
         </button>
-        {display  ? (
+        {selectedItem === id && (
+         <div>
+         <CourseList
+           teacherId={teacherId}
+           teacherName={teacherName}
+         ></CourseList>
+       </div>
+        )}
+        
+        {/*display  ? (
           <div className={`course-list course-list-${teacherId}`}>
               <CourseList
                 teacherId={teacherId}
                 teacherName={teacherName}
+                id={items} selectedItem={selectedItem} setSelectedItem={setSelectedItem}
               ></CourseList>
           </div>
         ) : (
           ""
-        )}
-        
+        )*/}
       </div>
     </>
   );

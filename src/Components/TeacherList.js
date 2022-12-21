@@ -17,7 +17,8 @@ function TeacherList() {
   });
 
   const [teachers, setTeachers] = useState([]);
-  const [clickedTeacher, setclickedTeacher] = useState(false);
+  //the selected item will be changed everytime we click on an item
+  const [selectedItem, setSelectedItem] = useState(-1); // id of the one you want to display the form for
 
   const loadTeachers = () => {
     axios
@@ -113,14 +114,12 @@ function TeacherList() {
       <div className="teachers">
         {teachers.map((teacher) => {
           return (
-            <div onClick={(() => {
-              setclickedTeacher(true);
-            })}><Teacher
+            <div><Teacher
               teacher={teacher}
               teacherId={teacher.id}
               teacherName={teacher.fullName}
               deleteTeacher={deleteTeacher}
-              isClicked={clickedTeacher}
+              id={teacher.id} selectedItem={selectedItem} setSelectedItem={setSelectedItem}
             ></Teacher></div>
           );
         })}

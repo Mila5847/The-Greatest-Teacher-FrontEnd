@@ -1,10 +1,7 @@
 import "./App.css";
 import { useForm } from "react-hook-form";
 import "./index.css";
-//import { Chart as ChartJS } from 'chart.js/auto'
-//import { Chart }            from 'react-chartjs-2'
 import { useEffect, useState } from "react";
-import { Data } from "./utils/Data";
 import { BarChart } from "./Components/BarChart";
 import React from "react";
 import { ArcElement } from "chart.js";
@@ -19,7 +16,7 @@ function App() {
   const scoresList = [];
   const teachersList = [];
 
-  const displayDiagram = () => {
+  useEffect(() => {
     axios
     .get("http://localhost:8080/api/scores")
     .then((response) => {
@@ -34,24 +31,23 @@ function App() {
       setChartData({
         labels:teachersList.map((teacher) => teacher),
         datasets:[{
-            backgroundColor: "rgb(0,0,255)",
-            borderColor: "rgba(255, 159, 64, 0.2)",
+            label: 'Score',
+            backgroundColor: "rgba(255, 143, 99, 0.3)",
+            borderColor: "rgb(255, 99, 132)",
             borderWidth: 2,
             data:scoresList.map((score) => score)
         }]
     })
     })
     .catch((error) => {});
-  };
+  }, [scoresList, teachersList]);
 
   const [chartData, setChartData] = useState({
     labels: teachersList.map((teacher) => teacher), 
-    datasets: [
-      {
-        label: "Teachers",
+    datasets: [{
         data: scoresList.map((score) => score),
         backgroundColor: [
-            "rgb(0,0,255)",
+            "rgba(255, 143, 99)",
           ],
           borderColor: [
             "rgb(255, 99, 132)",
@@ -61,18 +57,6 @@ function App() {
     ]
   })
 
-  /*useEffect(() => {
-    setChartData({
-        labels:teachersList.map((teacher) => teacher),
-        datasets:[{
-            backgroundColor: 'rgba(75,192,192,1)',
-            borderColor: 'rgba(0,0,0,1)',
-            borderWidth: 2,
-            data:scoresList.map((score) => score)
-        }]
-    })
-  }, [chartData, setChartData]);*/
-
   return (
     <div>
       <h1>The Greatest Teacher</h1>
@@ -80,7 +64,7 @@ function App() {
         <TeacherList/>
       </div>
       <div className="float-left">
-      <button className="buttonRatings" onClick={() => {displayDiagram()}}>Show Teachers' Ratings</button>
+      <button className="buttonRatings">Show Teachers' Ratings</button>
       </div>
       {showRatings && <BarChart chartData={chartData} /> }
     </div>
