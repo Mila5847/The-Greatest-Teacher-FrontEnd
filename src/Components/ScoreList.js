@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-function ScoreList({ courseId, courseName}) {
+function ScoreList({ courseId, courseName }) {
   const {
     register,
     handleSubmit,
@@ -15,6 +15,7 @@ function ScoreList({ courseId, courseName}) {
 
   const [scores, setScores] = useState([]);
 
+  // Add new data from form
   const handleScoreForm = (data) => {
     console.log("data is " + data.numberVotes);
     const givenScore = data.Score;
@@ -38,22 +39,26 @@ function ScoreList({ courseId, courseName}) {
     <div>
       <form onSubmit={handleSubmit(handleScoreForm)}>
         <input
-        className="scoreInput"
+          className="scoreInput"
           type="number"
           name="score"
           placeholder="Score"
-          {...register("Score", { required: true, max: {
-            value: 100,
-            message: "Please input a number between 0 and 100",
-          }, min: {
-            value: 0,
-            message: "Please input a number between 0 and 100",
-          },})}
+          {...register("Score", {
+            required: true,
+            max: {
+              value: 100,
+              message: "Please input a number between 0 and 100",
+            },
+            min: {
+              value: 0,
+              message: "Please input a number between 0 and 100",
+            },
+          })}
         />
         <div class="scoreErrorMessage">{errors.Score?.message}</div>
         <button className="submitScoreButton">Add Score To {courseName}</button>
-        <br/>
-        <br/>
+        <br />
+        <br />
       </form>
     </div>
   );

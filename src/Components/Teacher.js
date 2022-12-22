@@ -16,8 +16,7 @@ function Teacher({
   selectedItem,
   setSelectedItem,
 }) {
-  const isPhoneScreen = useMediaQuery({ query: "(max-width: 800px)" });
-  const [display, setDisplayMode] = useState(false);
+  const isPhoneScreen = useMediaQuery({ query: "(max-width: 820px)" });
 
   return (
     <div>

@@ -10,9 +10,13 @@ h2 {
   margin-top: -192px;
 }
 
-h3{
+h3 {
   color: orange;
   width: 200px;
+}
+
+h5 {
+  font-size: 12px;
 }
 
 .deleteButton {
@@ -25,6 +29,11 @@ h3{
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
+}
+
+.deleteButton:hover {
+  background-color: darkblue;
+  color: white;
 }
 
 .buttonTeacher {
@@ -57,6 +66,11 @@ h3{
   max-inline-size: 120px;
 }
 
+.buttonTeacher:hover {
+  background-color: #ffe5b4;
+  color: #f54c0f;
+}
+
 .buttonCourse {
   background-color: cornflowerblue;
   border: 2px solid cornflowerblue;
@@ -71,6 +85,7 @@ h3{
   cursor: pointer;
   min-width: 200px;
 }
+
 .buttonCourseResponsive {
   background-color: cornflowerblue;
   border: 2px solid cornflowerblue;
@@ -84,16 +99,6 @@ h3{
   transition-duration: 0.4s;
   cursor: pointer;
   min-width: 100px;
-}
-
-.deleteButton:hover {
-  background-color: darkblue;
-  color: white;
-}
-
-.buttonTeacher:hover {
-  background-color: #ffe5b4;
-  color: #f54c0f;
 }
 
 .buttonCourse:hover {
@@ -151,6 +156,7 @@ p {
   margin-top: 60px;
   margin-left: -70px;
 }
+
 .teacherFormResponsive {
   background-color: #15172b;
   border-radius: 20px;
@@ -158,8 +164,6 @@ p {
   height: 315px;
   padding: 20px;
   width: 250px;
-  /*margin-right: 47px;
-  margin-top: 60px;*/
   margin-left: -180px;
 }
 
@@ -180,7 +184,6 @@ p {
   height: 205px;
   padding: 20px;
   width: 180px;
-  /*margin: -70px 20px 20px 430px;*/
 }
 
 .input-container {
@@ -227,6 +230,7 @@ p {
   text-align: center;
   width: 100%;
 }
+
 .submit:hover {
   background-color: #b1d4e0;
   border-radius: 12px;
@@ -258,15 +262,16 @@ p {
 }
 
 .teachers {
-  margin: 20px;
+  margin: -306px 20px 20px 290px;
 }
+
 .course {
   display: list-item;
   margin-left: 199px;
 }
 
 .courses {
-  margin: -153px 0px 1px -121px;
+  margin: -146px 0px 0px -122px;
 }
 
 .scoreErrorMessage {
@@ -278,19 +283,12 @@ p {
   display: flex;
   width: 915px;
   margin: 23px;
-  padding-top: 49px;
+  padding-top: 110px;
 }
 
 .chart-containerResponsivePhone {
   display: flex;
   width: 315px;
-  margin: 23px;
-  padding-top: 49px;
-}
-
-.chart-containerResponsiveIpad {
-  display: flex;
-  width: 515px;
   margin: 23px;
   padding-top: 49px;
 }

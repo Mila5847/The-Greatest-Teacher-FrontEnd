@@ -5,8 +5,10 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useMediaQuery } from "react-responsive";
 
+// List of teachers and form to add a new teacher
 function TeacherList() {
-  const isPhoneScreen = useMediaQuery({ query: "(max-width: 1000px)" });
+  const isPhoneScreen = useMediaQuery({ query: "(max-width: 820px)" });
+
   const {
     register,
     handleSubmit,
@@ -20,9 +22,14 @@ function TeacherList() {
   });
 
   const [teachers, setTeachers] = useState([]);
-  //the selected item will be changed everytime we click on an item
-  const [selectedItem, setSelectedItem] = useState(-1); // id of the one you want to display the form for
 
+  const [selectedItem, setSelectedItem] = useState(-1);
+
+  useEffect(() => {
+    loadTeachers();
+  }, []);
+
+  // Get all the teachers for display
   const loadTeachers = () => {
     axios
       .get("http://localhost:8080/api/teachers")
@@ -35,17 +42,7 @@ function TeacherList() {
       .catch((error) => {});
   };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/teachers")
-      .then((response) => {
-        if (response.status === 200) {
-          setTeachers(response.data);
-        }
-      })
-      .catch((error) => {});
-  });
-
+  // Add new data from form
   const handleTeacherForm = (data) => {
     console.log(data);
     const firstNameTeacher = data.firstName;
@@ -115,19 +112,21 @@ function TeacherList() {
           <button className="submit">Add Teacher</button>
         </div>
       </form>
-      {teachers.map((teacher) => {
-        return (
-          <Teacher
-            teacher={teacher}
-            teacherId={teacher.id}
-            teacherName={teacher.fullName}
-            deleteTeacher={deleteTeacher}
-            id={teacher.id}
-            selectedItem={selectedItem}
-            setSelectedItem={setSelectedItem}
-          ></Teacher>
-        );
-      })}
+      <div className={isPhoneScreen ? "" : "teachers"}>
+        {teachers.map((teacher) => {
+          return (
+            <Teacher
+              teacher={teacher}
+              teacherId={teacher.id}
+              teacherName={teacher.fullName}
+              deleteTeacher={deleteTeacher}
+              id={teacher.id}
+              selectedItem={selectedItem}
+              setSelectedItem={setSelectedItem}
+            ></Teacher>
+          );
+        })}
+      </div>
     </div>
   );
 }
