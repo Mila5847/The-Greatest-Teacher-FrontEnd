@@ -12,7 +12,7 @@ The back end is based on the Spring Boot framework and Gradle, a build automatio
 
 ### Running the Project
 
-To run the project, the back end must be running so the entities and the endpoints are accessible. Then, in the front end, by clicking on the teachers, the courses, or the submit buttons of the forms, it is possible to make different requests thanks to Axios.
+To run the project, the back end must be running so the entities and the endpoints are accessible. Then, in the front end, by clicking on the teachers, the courses, or the submit buttons of the forms, it is possible to make different requests thanks to Axios. For a more detailed explanation of the back end, please click here: https://github.com/Mila5847/TheGreatestTeacher_BackEnd.git.
 
 ### Challenges and Features for Future Implementation
 
@@ -46,7 +46,7 @@ To run the project, the back end must be running so the entities and the endpoin
 </button>
 ```
 
-Here is the refactored version, way simplier and clearer:
+The refactored version is way simpler and clearer:
 
 ``` ruby
 <button className={isPhoneScreen ? "buttonTeacherResponsive" : "buttonTeacher"}
