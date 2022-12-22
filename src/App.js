@@ -9,12 +9,20 @@ import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import TeacherList from "./Components/TeacherList";
 import axios from "axios";
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
+import { useRef } from "react";
+import { useMediaQuery } from 'react-responsive'
+
 
 function App() {
 
-  const [showRatings, setShowRatings] = useState(true);
+  const isPhoneScreen = useMediaQuery({ query: '(max-width: 820px)' })
+  const isIpadScreen = useMediaQuery({ query: '(max-width: 1024px)' })
   const scoresList = [];
   const teachersList = [];
+  const [highestScore, setHighestScore] = useState([]);
+  const [teacherWithHighestScore, setTeacherWithHighestScore] = useState([]);
 
   useEffect(() => {
     axios
@@ -23,9 +31,8 @@ function App() {
       if (response.status === 200) {
        for (let i = 0; i < response.data.length; i++){
         scoresList.push(response.data[i].overallScore);
-        console.log(scoresList);
-        teachersList.push(response.data[i].fullName);
-        console.log(teachersList);
+        const numberOfVotes = response.data[i].overallNumberOfVotes;
+        teachersList.push(response.data[i].fullName + "(" + numberOfVotes + ")");
        }
       }
       setChartData({
@@ -57,17 +64,40 @@ function App() {
     ]
   })
 
+  useEffect(() => {
+    const highestScore = Math.max(...chartData.datasets[0].data);
+    setHighestScore(highestScore);
+    for (let i = 0; i < chartData.datasets[0].data.length; i++){
+      if(highestScore === chartData.datasets[0].data[i]){
+        let teacherWithHighestScore = chartData.labels[i];
+        setTeacherWithHighestScore(teacherWithHighestScore);
+      }
+    }
+  }, [scoresList, teachersList]);
+
+
   return (
-    <div>
+    (isPhoneScreen || isIpadScreen ? <div>
       <h1>The Greatest Teacher</h1>
       <div class="float-left">
         <TeacherList/>
       </div>
-      <div className="float-left">
-      <button className="buttonRatings">Show Teachers' Ratings</button>
+      <BarChart chartData={chartData} /> 
+      <div>
+      <h3>{teacherWithHighestScore} has the highest score of {highestScore}/100</h3>
+        <Rating name="read-only" style={{ maxWidth: 250 }} value={5} readOnly />
       </div>
-      {showRatings && <BarChart chartData={chartData} /> }
-    </div>
+    </div> : <div>
+      <h1>The Greatest Teacher</h1>
+      <div class="float-left">
+        <TeacherList/>
+      </div>
+      <BarChart chartData={chartData} /> 
+      <h2>{teacherWithHighestScore} has the highest score of {highestScore}/100</h2>
+      <div class="float-right">
+        <Rating name="read-only" style={{ maxWidth: 250 }} value={5} readOnly />
+      </div>
+    </div>)
   );
 }
 export default App

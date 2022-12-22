@@ -1,6 +1,18 @@
 h1 {
-  color: black;
+  color: orange;
   text-align: center;
+}
+
+h2 {
+  color: orange;
+  text-align: center;
+  margin-left: 1004px;
+  margin-top: -192px;
+}
+
+h3{
+  color: orange;
+  width: 200px;
 }
 
 .deleteButton {
@@ -31,6 +43,20 @@ h1 {
   max-inline-size: 250px;
 }
 
+.buttonTeacherResponsive {
+  background-color: #ff7f50;
+  border: 2px solid #ff7f50;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  font-size: 20px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  min-width: 120px;
+  max-inline-size: 120px;
+}
+
 .buttonCourse {
   background-color: cornflowerblue;
   border: 2px solid cornflowerblue;
@@ -45,32 +71,56 @@ h1 {
   cursor: pointer;
   min-width: 200px;
 }
+.buttonCourseResponsive {
+  background-color: cornflowerblue;
+  border: 2px solid cornflowerblue;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  min-width: 100px;
+}
 
-.deleteButton:hover{
+.deleteButton:hover {
   background-color: darkblue;
-  color: #ff7f50;
+  color: white;
 }
 
 .buttonTeacher:hover {
   background-color: #ffe5b4;
-  color: #ff7f50;
+  color: #f54c0f;
 }
 
 .buttonCourse:hover {
-  background-color:lightblue;
-  color:darkblue;
+  background-color: lightblue;
+  color: darkblue;
 }
 
-.buttonRatings:hover {
-  background-color:greenyellow;
-  color:green;
-}
-
-.buttonRatings {
-  background-color: green;
-  border: 2px solid green;
+.submitScoreButton {
+  background-color: #fac847;
+  border: 2px solid #fac847;
   color: white;
-  padding: 16px 32px;
+  padding: 16px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.submitScoreButton:hover {
+  background-color: #ffe878;
+  border: 2px solid #fac847;
+  color: #e67e00;
+  padding: 16px 0px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -97,7 +147,20 @@ p {
   height: 315px;
   padding: 20px;
   width: 320px;
-
+  margin-right: 47px;
+  margin-top: 60px;
+  margin-left: -70px;
+}
+.teacherFormResponsive {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 315px;
+  padding: 20px;
+  width: 250px;
+  /*margin-right: 47px;
+  margin-top: 60px;*/
+  margin-left: -180px;
 }
 
 .courseForm {
@@ -107,7 +170,17 @@ p {
   height: 205px;
   padding: 20px;
   width: 320px;
-  margin: -225px 20px 20px 430px;
+  margin: -70px 20px 20px 430px;
+}
+
+.courseFormResponsive {
+  background-color: #15172b;
+  border-radius: 20px;
+  box-sizing: border-box;
+  height: 205px;
+  padding: 20px;
+  width: 180px;
+  /*margin: -70px 20px 20px 430px;*/
 }
 
 .input-container {
@@ -139,7 +212,7 @@ p {
   height: 100%;
   outline: 0;
   padding: 5px 10px 5px;
-  width: 100%;
+  width: 100px;
 }
 
 .submit {
@@ -148,6 +221,18 @@ p {
   border: 0;
   box-sizing: border-box;
   color: #eee;
+  cursor: pointer;
+  font-size: 18px;
+  height: 50px;
+  text-align: center;
+  width: 100%;
+}
+.submit:hover {
+  background-color: #b1d4e0;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: darkblue;
   cursor: pointer;
   font-size: 18px;
   height: 50px;
@@ -164,20 +249,16 @@ p {
   width: 50%;
   float: left;
   display: inline-flex;
-  margin: 56px 0px 0px 35px;
+  margin: 56px 0px 0px 196px;
 }
 
 .float-right {
-  width: 50%;
-  float: right;
-  display: inline-flex;
-  margin: 56px 0px 0px 35px;
+  margin-left: 1225px;
+  margin-top: -245px;
 }
 
 .teachers {
-
   margin: 20px;
-
 }
 .course {
   display: list-item;
@@ -185,10 +266,31 @@ p {
 }
 
 .courses {
-  margin: -222px 20px 20px 480px;
+  margin: -153px 0px 1px -121px;
 }
 
-.courseErrorMessage {
+.scoreErrorMessage {
   color: black;
-  margin-top: 1px;
+  width: 218px;
+}
+
+.chart-container {
+  display: flex;
+  width: 915px;
+  margin: 23px;
+  padding-top: 49px;
+}
+
+.chart-containerResponsivePhone {
+  display: flex;
+  width: 315px;
+  margin: 23px;
+  padding-top: 49px;
+}
+
+.chart-containerResponsiveIpad {
+  display: flex;
+  width: 515px;
+  margin: 23px;
+  padding-top: 49px;
 }

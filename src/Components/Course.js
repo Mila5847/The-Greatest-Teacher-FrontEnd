@@ -10,7 +10,7 @@ function Course({courseName, courseId}) {
   return (
   <div>
     <button
-      className="buttonCourse"
+      className="buttonCourseResponsive"
       onClick={() => {
         setDisplayMode(!display)
       }}

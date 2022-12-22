@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Course from "./Course";
 import { useForm } from "react-hook-form";
+import { useMediaQuery } from 'react-responsive'
 
 function CourseList({
   teacherId,
@@ -11,6 +12,7 @@ function CourseList({
   selectedItem,
   setSelectedItem,
 }) {
+  const isPhoneScreen = useMediaQuery({ query: '(max-width: 1000px)' })
   const {
     register,
     handleSubmit,
@@ -66,7 +68,40 @@ function CourseList({
   };
 
   return (
-    <div>
+   (isPhoneScreen ?  <div>
+    {selectedItem === id && (
+      <form className="courseFormResponsive" onSubmit={handleSubmit(handleCourseForm)}>
+        <div className="input-container">
+          <input
+            class="input"
+            type="text"
+            placeholder="Course name"
+            {...register("courseName", {
+              required: "Required field.",
+              minLength: {
+                value: 2,
+                message: "The input's minimum length is 2 characters",
+              },
+              maxLength: 100,
+            })}
+          />
+          <p>{errors.courseName?.message}</p>
+          <button className="submit">Add Course To {teacherName}</button>
+        </div>
+      </form>
+    )}
+      {courses.map((course) => {
+        return (
+          <div
+            onClick={() => {
+              setSelectedItem(id);
+            }}
+          >
+            <Course courseName={course.name} courseId={course.id}></Course>
+          </div>
+        );
+      })}
+  </div> :  <div>
       {selectedItem === id && (
         <form className="courseForm" onSubmit={handleSubmit(handleCourseForm)}>
           <div className="input-container">
@@ -88,7 +123,7 @@ function CourseList({
           </div>
         </form>
       )}
-      <div>
+      <div class="courses">
         {courses.map((course) => {
           return (
             <div
@@ -102,7 +137,7 @@ function CourseList({
           );
         })}
       </div>
-    </div>
+    </div>)
   );
 }
 export default CourseList;

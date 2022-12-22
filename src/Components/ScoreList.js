@@ -16,11 +16,11 @@ function ScoreList({ courseId, courseName}) {
   const [scores, setScores] = useState([]);
 
   const handleScoreForm = (data) => {
-    console.log(data);
+    console.log("data is " + data.numberVotes);
     const givenScore = data.Score;
-    console.log(givenScore);
+    //console.log(givenScore);
     const score = { score: givenScore };
-    console.log("real score " + score.score);
+    //console.log("real score " + score.score);
     addScore(score);
     reset();
   };
@@ -50,8 +50,8 @@ function ScoreList({ courseId, courseName}) {
             message: "Please input a number between 0 and 100",
           },})}
         />
-        <p class="courseErrorMessage">{errors.Score?.message}</p>
-        <button className="submit">Add Score To {courseName}</button>
+        <div class="scoreErrorMessage">{errors.Score?.message}</div>
+        <button className="submitScoreButton">Add Score To {courseName}</button>
         <br/>
         <br/>
       </form>
