@@ -141,10 +141,6 @@ p {
   height: 34px;
 }
 
-.pTeachers {
-  height: 0px;
-}
-
 .teacherForm {
   background-color: #15172b;
   border-radius: 20px;
@@ -257,7 +253,7 @@ p {
 }
 
 .float-right {
-  margin-left: 1225px;
+  margin-left: 1120px;
   margin-top: -245px;
 }
 
@@ -283,7 +279,7 @@ p {
   display: flex;
   width: 915px;
   margin: 23px;
-  padding-top: 110px;
+  padding-top: 300px;
 }
 
 .chart-containerResponsivePhone {

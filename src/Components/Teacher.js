@@ -4,7 +4,6 @@ import axios from "axios";
 import CourseList from "./CourseList.js";
 import { useForm } from "react-hook-form";
 import App from "../App.js";
-import "./Teacher.css";
 import { useMediaQuery } from "react-responsive";
 
 function Teacher({

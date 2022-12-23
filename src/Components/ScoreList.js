@@ -19,9 +19,7 @@ function ScoreList({ courseId, courseName }) {
   const handleScoreForm = (data) => {
     console.log("data is " + data.numberVotes);
     const givenScore = data.Score;
-    //console.log(givenScore);
     const score = { score: givenScore };
-    //console.log("real score " + score.score);
     addScore(score);
     reset();
   };
