@@ -5,6 +5,7 @@ import Course from "./Course";
 import { useForm } from "react-hook-form";
 import { useMediaQuery } from "react-responsive";
 
+//Courses and form to add a new course
 function CourseList({
   teacherId,
   teacherName,
@@ -21,6 +22,7 @@ function CourseList({
     courseName: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState("");
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 820px)" });
   const [courses, setCourses] = useState([]);
 
@@ -34,20 +36,18 @@ function CourseList({
       .get("http://localhost:8080/api/courses/" + teacherId, {})
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.data);
           setCourses(response.data);
         }
       })
-      .catch((error) => {});
+      .catch(() => {
+        setErrorMessage("An error has occured.");
+      });
   };
 
-  // Add new data from form
+  // Add new course from form
   const handleCourseForm = (data) => {
-    console.log(data);
     const courseName = data.courseName;
-    console.log(courseName);
     const course = { name: courseName };
-    console.log(course);
     addCourse(course);
     reset();
   };
@@ -58,7 +58,9 @@ function CourseList({
       .then(function (response) {
         loadCourses();
       })
-      .catch(function (error) {});
+      .catch(function () {
+        setErrorMessage("An error has occured.");
+      });
   };
 
   return (
@@ -77,9 +79,16 @@ function CourseList({
                 required: "Required field.",
                 minLength: {
                   value: 2,
-                  message: "The input's minimum length is 2 characters",
+                  message: "The name's minimum length is 2 characters",
                 },
-                maxLength: 100,
+                maxLength: {
+                  value: 15,
+                  message: "The name's maximum length is 15 characters",
+                },
+                pattern: {
+                  value: /^[a-zA-Z]+$/i,
+                  message: "The name should only contain letters",
+                },
               })}
             />
             {isPhoneScreen ? (
@@ -92,18 +101,23 @@ function CourseList({
         </form>
       )}
       <div className={isPhoneScreen ? "" : "courses"}>
-      {courses.map((course) => {
-        return (
-          <div
-            className={isPhoneScreen ? "" : "course"}
-            onClick={() => {
-              setSelectedItem(id);
-            }}
-          >
-            <Course courseName={course.name} courseId={course.id}></Course>
-          </div>
-        );
-      })}
+        {courses.map((course) => {
+          return (
+            <div
+              className={isPhoneScreen ? "" : "course"}
+              onClick={() => {
+                setSelectedItem(id);
+              }}
+            >
+              <Course
+                teacherId={teacherId}
+                courseName={course.name}
+                courseId={course.id}
+                loadCourses={loadCourses}
+              ></Course>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

@@ -1,17 +1,15 @@
 import "./App.css";
-import { useForm } from "react-hook-form";
 import "./index.css";
+import React from "react";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { BarChart } from "./Components/BarChart";
-import React from "react";
 import { ArcElement } from "chart.js";
 import Chart from "chart.js/auto";
 import { Bar } from "react-chartjs-2";
 import TeacherList from "./Components/TeacherList";
-import axios from "axios";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
-import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 
 function App() {
@@ -21,8 +19,12 @@ function App() {
   const scoresList = [];
   const teachersList = [];
 
+  const [errorMessage, setErrorMessage] = useState("");
   const [highestScore, setHighestScore] = useState([]);
   const [teacherWithHighestScore, setTeacherWithHighestScore] = useState([]);
+  const [teacherFiveStars, setTeacherFiveStars] = useState(
+    "No teachers and scores defined."
+  );
 
   // Get the scores to display on the Bar Chart
   useEffect(() => {
@@ -51,7 +53,9 @@ function App() {
           ],
         });
       })
-      .catch((error) => {});
+      .catch(() => {
+        setErrorMessage("An error has occured.");
+      });
   }, [scoresList, teachersList]);
 
   // Update the scores' list and the teachers' list for the Bar Chart
@@ -69,12 +73,21 @@ function App() {
 
   // Get the highest score to display with the rating stars
   useEffect(() => {
+    if (chartData.labels.length === 0) {
+      setTeacherFiveStars("No teachers and scores defined.");
+    }
     const highestScore = Math.max(...chartData.datasets[0].data);
     setHighestScore(highestScore);
     for (let i = 0; i < chartData.datasets[0].data.length; i++) {
       if (highestScore === chartData.datasets[0].data[i]) {
         let teacherWithHighestScore = chartData.labels[i];
         setTeacherWithHighestScore(teacherWithHighestScore);
+        setTeacherFiveStars(
+          teacherWithHighestScore +
+            "has the highest score of " +
+            highestScore +
+            "/100."
+        );
       }
     }
   }, [scoresList, teachersList]);
@@ -87,9 +100,7 @@ function App() {
       </div>
       <BarChart chartData={chartData} />
       <div>
-        <h3>
-          {teacherWithHighestScore} has the highest score of {highestScore}/100
-        </h3>
+        <h3>{teacherFiveStars}</h3>
         <Rating name="read-only" style={{ maxWidth: 250 }} value={5} readOnly />
       </div>
     </div>
@@ -100,9 +111,7 @@ function App() {
         <TeacherList />
       </div>
       <BarChart chartData={chartData} />
-      <h2>
-        {teacherWithHighestScore} has the highest score of {highestScore}/100
-      </h2>
+      <h2>{teacherFiveStars}</h2>
       <div class="float-right">
         <Rating name="read-only" style={{ maxWidth: 250 }} value={5} readOnly />
       </div>

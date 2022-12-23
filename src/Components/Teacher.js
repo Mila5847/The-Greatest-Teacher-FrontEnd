@@ -1,11 +1,7 @@
-import { Component, useEffect } from "react";
-import { useState } from "react";
-import axios from "axios";
 import CourseList from "./CourseList.js";
-import { useForm } from "react-hook-form";
-import App from "../App.js";
 import { useMediaQuery } from "react-responsive";
 
+// Teacher and course list
 function Teacher({
   teacher,
   teacherId,

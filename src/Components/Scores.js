@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useEffect } from "react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
-function ScoreList({ courseId, courseName }) {
+// Score form
+function Scores({ courseId, courseName }) {
   const {
     register,
     handleSubmit,
@@ -13,11 +13,11 @@ function ScoreList({ courseId, courseName }) {
     score: "",
   });
 
+  const [errorMessage, setErrorMessage] = useState("");
   const [scores, setScores] = useState([]);
 
-  // Add new data from form
+  // Add new score from form
   const handleScoreForm = (data) => {
-    console.log("data is " + data.numberVotes);
     const givenScore = data.Score;
     const score = { score: givenScore };
     addScore(score);
@@ -30,7 +30,9 @@ function ScoreList({ courseId, courseName }) {
       .then(function (response) {
         setScores(response.data);
       })
-      .catch(function (error) {});
+      .catch(function () {
+        setErrorMessage("An error has occured.");
+      });
   };
 
   return (
@@ -45,11 +47,15 @@ function ScoreList({ courseId, courseName }) {
             required: true,
             max: {
               value: 100,
-              message: "Please input a number between 0 and 100",
+              message: "The score should be between 0 and 100.",
             },
             min: {
               value: 0,
-              message: "Please input a number between 0 and 100",
+              message: "The score should be between 0 and 100.",
+            },
+            pattern: {
+              value: /^[0-9]+$/,
+              message: "The score should only contain numbers.",
             },
           })}
         />
@@ -61,4 +67,4 @@ function ScoreList({ courseId, courseName }) {
     </div>
   );
 }
-export default ScoreList;
+export default Scores;

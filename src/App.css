@@ -136,6 +136,36 @@ h5 {
   min-width: 200px;
 }
 
+.updateCourseButton {
+  background-color: lightslategray;
+  border: 2px solid lightslategray;
+  color: white;
+  padding: 16px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  min-width: 200px;
+}
+
+.updateCourseButton:hover {
+  background-color: lightgray;
+  border: 2px solid lightslategray;
+  color: #5a5a5a;
+  padding: 16px 0px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  min-width: 200px;
+}
+
 p {
   font-size: 15px;
   height: 34px;
@@ -212,6 +242,19 @@ p {
   outline: 0;
   padding: 5px 10px 5px;
   width: 100px;
+}
+
+.nameUpdateInput {
+  background-color: #303245;
+  border-radius: 12px;
+  border: 0;
+  box-sizing: border-box;
+  color: white;
+  font-size: 18px;
+  height: 100%;
+  outline: 0;
+  width: 150px;
+  padding: 5px 10px 5px;
 }
 
 .submit {

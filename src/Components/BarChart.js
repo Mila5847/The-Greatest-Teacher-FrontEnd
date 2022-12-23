@@ -1,7 +1,7 @@
 import { Bar } from "react-chartjs-2";
 import { useMediaQuery } from "react-responsive";
 
-// Bar Chart with scores and teachers
+// Bar Chart composed of scores and teachers
 
 export const BarChart = ({ chartData }) => {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 820px)" });

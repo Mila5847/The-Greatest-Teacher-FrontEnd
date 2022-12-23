@@ -21,8 +21,8 @@ function TeacherList() {
     },
   });
 
+  const [errorMessage, setErrorMessage] = useState("");
   const [teachers, setTeachers] = useState([]);
-
   const [selectedItem, setSelectedItem] = useState(-1);
 
   useEffect(() => {
@@ -35,21 +35,20 @@ function TeacherList() {
       .get("http://localhost:8080/api/teachers")
       .then((response) => {
         if (response.status === 200) {
-          console.log(response.data);
           setTeachers(response.data);
         }
       })
-      .catch((error) => {});
+      .catch(() => {
+        setErrorMessage("An error has occured.");
+      });
   };
 
   // Add new data from form
   const handleTeacherForm = (data) => {
-    console.log(data);
     const firstNameTeacher = data.firstName;
     const lastNameTeacher = data.lastName;
-    console.log(firstNameTeacher + lastNameTeacher);
     const teacher = { firstName: firstNameTeacher, lastName: lastNameTeacher };
-    console.log(teacher);
+
     addTeacher(teacher);
     reset();
   };
@@ -60,7 +59,9 @@ function TeacherList() {
       .then(function (response) {
         loadTeachers();
       })
-      .catch(function (error) {});
+      .catch(function () {
+        setErrorMessage("An error has occured.");
+      });
   };
 
   const deleteTeacher = (teacher) => {
@@ -69,7 +70,9 @@ function TeacherList() {
       .then(function (response) {
         loadTeachers();
       })
-      .catch(function (error) {});
+      .catch(function () {
+        setErrorMessage("An error has occured.");
+      });
   };
 
   return (
@@ -88,9 +91,16 @@ function TeacherList() {
               required: "Required field.",
               minLength: {
                 value: 2,
-                message: "The input's minimum length is 2 characters",
+                message: "The name's minimum length is 2 characters",
               },
-              maxLength: 100,
+              maxLength: {
+                value: 15,
+                message: "The name's maximum length is 15 characters",
+              },
+              pattern: {
+                value: /^[a-zA-Z]+$/i,
+                message: "The name should only contain letters",
+              },
             })}
           />
           <p>{errors.firstName?.message}</p>
@@ -105,7 +115,14 @@ function TeacherList() {
                 value: 2,
                 message: "The input's minimum length is 2 characters",
               },
-              maxLength: 100,
+              maxLength: {
+                value: 15,
+                message: "The input's maximum length is 15 characters",
+              },
+              pattern: {
+                value: /^[a-zA-Z]+$/i,
+                message: "The input should contain only letters",
+              },
             })}
           />
           <p>{errors.lastName?.message}</p>
