@@ -29,7 +29,7 @@ To run the project, the back end must be running so the entities and the endpoin
 
 The vanilla JS code that I used:
 
-``` ruby
+``` javascript
 <button className="buttonTeacher"
           onClick={() => {
             setDisplayMode(!display)
@@ -56,7 +56,7 @@ The vanilla JS code that I used:
 
 The refactored version is way simpler and clearer:
 
-``` ruby
+``` javascript
 <button className={isPhoneScreen ? "buttonTeacherResponsive" : "buttonTeacher"}
         onClick={() => {
           setSelectedItem(id);
