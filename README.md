@@ -16,7 +16,7 @@ The Greatest Teacher application provides an easy way to rate teachers and view 
 #### Screenshots of application in mobile view:
 
 ![Initial UI in mobile view](mobileInitial.png)
-![UI when course gets clicked](mobilecourseClicked.png)
+![UI when course gets clicked](mobileCourseClicked.png)
 ![UI with the rating chart](mobileChart.png)
 
 ### Technologies used when building the application
