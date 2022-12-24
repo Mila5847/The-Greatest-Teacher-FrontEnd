@@ -8,8 +8,8 @@ function Teacher({
   teacherName,
   deleteTeacher,
   id,
-  selectedItem,
-  setSelectedItem,
+  selectedTeacher,
+  setSelectedTeacher,
 }) {
   const isPhoneScreen = useMediaQuery({ query: "(max-width: 820px)" });
 
@@ -26,12 +26,12 @@ function Teacher({
       <button
         className={isPhoneScreen ? "buttonTeacherResponsive" : "buttonTeacher"}
         onClick={() => {
-          setSelectedItem(id);
+          setSelectedTeacher(id);
         }}
       >
         {teacherName}
       </button>
-      {selectedItem === id && (
+      {selectedTeacher === id && (
         <CourseList
           teacherId={teacherId}
           teacherName={teacherName}

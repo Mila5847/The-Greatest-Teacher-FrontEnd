@@ -84,7 +84,7 @@ function App() {
         setTeacherWithHighestScore(teacherWithHighestScore);
         setTeacherFiveStars(
           teacherWithHighestScore +
-            "has the highest score of " +
+            " has the highest score of " +
             highestScore +
             "/100."
         );

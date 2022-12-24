@@ -23,7 +23,7 @@ function TeacherList() {
 
   const [errorMessage, setErrorMessage] = useState("");
   const [teachers, setTeachers] = useState([]);
-  const [selectedItem, setSelectedItem] = useState(-1);
+  const [selectedTeacher, setSelectedTeacher] = useState(-1);
 
   useEffect(() => {
     loadTeachers();
@@ -138,8 +138,8 @@ function TeacherList() {
               teacherName={teacher.fullName}
               deleteTeacher={deleteTeacher}
               id={teacher.id}
-              selectedItem={selectedItem}
-              setSelectedItem={setSelectedItem}
+              selectedTeacher={selectedTeacher}
+              setSelectedTeacher={setSelectedTeacher}
             ></Teacher>
           );
         })}
