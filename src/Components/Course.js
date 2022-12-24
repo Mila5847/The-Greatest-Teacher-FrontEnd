@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import ScoreList from "./Scores.js";
+import Score from "./Scores.js";
 import { useMediaQuery } from "react-responsive";
 import { useForm } from "react-hook-form";
 
@@ -56,7 +56,7 @@ function Course({ teacherId, courseName, courseId, loadCourses }) {
       </button>
       {display && (
         <>
-          <ScoreList courseId={courseId} courseName={courseName}></ScoreList>
+          <Score courseId={courseId} courseName={courseName}></Score>
           <form onSubmit={handleSubmit(handleUpdateCourse)}>
             <input
               className="nameUpdateInput"
