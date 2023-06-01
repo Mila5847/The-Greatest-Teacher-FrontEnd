@@ -1,5 +1,17 @@
 # The Greatest Teacher
 
+## Project Overview
+Done throughout my second year of College in Computer Science for my Java class, the Greatest Teacher project's purpose was to develop an application that allows a user to rate teachers and view their performances using Axios for the HTTP requests and React libraries for the UI.
+
+## Table of Contents
+- [Project Description](#project-description)
+- [Technologies used](#technologies)
+- [Run the Project](#run-project)
+- [Challenges](#challenges)
+- [Future Improvements Ideas](#improvements)
+- [Acknowledgments](#acknowledgments)
+
+<a name="project-description"></a>
 ## Project Description
 
 ### Application's purpose
@@ -13,23 +25,23 @@ The Greatest Teacher application provides an easy way to rate teachers and view 
 ![UI when a course gets clicked](courseIsClicked.png)
 ![UI with the rating chart](chart.png)
 
-#### Screenshots of application in mobile view:
+#### Screenshots of the application in mobile view:
 
 ![Initial UI in mobile view](mobileInitial.png)
-![UI when course gets clicked](mobileCourseClicked.png)
+![UI when the course gets clicked](mobileCourseClicked.png)
 ![UI with the rating chart](mobileChart.png)
 
-### Technologies used when building the application
+<a name="technologies"></a>
+## Technologies used when building the application
 
 The back end is based on the Spring Boot framework and Gradle, a build automation tool. The dependencies used are Spring Web, Spring Boot DevTools, Lombok, Spring Data JPA, and H2 Database. Axios is used to make HTTP requests from the front end to the back end. The front end relies on React and three React libraries (React Hook Form, Chart.js, and React Rating), as well as on HTML and CSS.
 
-### Running the project
-
+<a name="run-project"></a>
+## Run the project
 To run the project, the back end must be running so the entities and the endpoints are accessible. Then, in the front end, by clicking on the teachers, the courses, or the submit buttons of the forms, it is possible to make different requests with Axios. The H2 database could be used to see the entity tables and their content. For a more detailed explanation of the back end, please visit the back-end repository at https://github.com/Mila5847/TheGreatestTeacher_BackEnd.git.
 
-### Challenges and Features for future implementation
-
-#### Challenges
+<a name="challenges"></a>
+## Challenges
 
 1. When I click on a specific teacher, I wanted to display its courses and its form for adding courses. When I click on another teacher, I wanted the courses and the form of the previous teacher to hide and get replaced by the current teacher's courses and form. However, I could not target the teacher that was last clicked, so whenever I click on a teacher, the form to add a course overlapped with the previous form. To solve this problem, I used vanilla JS until my teacher showed me an easier and clearer way to achieve this.
 
@@ -98,8 +110,14 @@ In Teacher.js (the Teacher component which displays the teacher's button and the
 2. I also had difficulty setting up the bar chart from the Chart.js library in React. I needed to update the bar chart every time a score was inputted. However, the charting library has its particularities and the way to update the data was not obvious. After some research, I found a specific way of updating the chart's data with useState.
 3. Another thing on which I spend a lot of time is the teachers' list display. Since some components get displayed when other components are clicked, there are a lot of "nested" returns and some components were displaced. I just needed to properly define the style for each component so it does not interfere with the other components' style.
 
-#### Features for improvement
+<a name="improvements"></a>
+## Future Improvements Ideas
 
 1. I would like to have only one form to add a course to a specific teacher, instead of having the same form displayed every time a teacher is clicked. I would like it to be similar to the form that adds teachers with the only difference being that it would be on the right side of the screen.
 2. I would like to be able to export a file with the teachers' performances. I think that a summary of the teachers' performance could be useful to easily analyze the data and generate some statistics.
 3. I would like to implement a feature that allows a person to delete a teacher only if you have specific permission. For example, the user must enter a password before being able to delete a teacher.
+
+<a name="acknowledgments"></a>
+## Future Improvements Ideas
+I would like to thank my teacher, Tawfiq Jawhar, for guiding me throughout the project.
+I would like to thank my brother, Petar Kehayov, for helping me with the Axios requests and for figuring out how to use some of the React libraries.
