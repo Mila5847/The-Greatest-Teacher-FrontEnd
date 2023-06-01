@@ -118,6 +118,6 @@ In Teacher.js (the Teacher component which displays the teacher's button and the
 3. I would like to implement a feature that allows a person to delete a teacher only if you have specific permission. For example, the user must enter a password before being able to delete a teacher.
 
 <a name="acknowledgments"></a>
-## Future Improvements Ideas
+## Acknowledgments
 I would like to thank my teacher, Tawfiq Jawhar, for guiding me throughout the project.
 I would like to thank my brother, Petar Kehayov, for helping me with the Axios requests and for figuring out how to use some of the React libraries.
