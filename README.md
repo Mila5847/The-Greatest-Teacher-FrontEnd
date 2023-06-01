@@ -1,7 +1,7 @@
 # The Greatest Teacher_FrontEnd
 
 ## Project Overview
-Done throughout my second year of College in Computer Science for my Java class, the Greatest Teacher project's purpose was to develop an application that allows a user to rate teachers and view their performances using Axios for the HTTP requests and React libraries for the UI.
+Done throughout my second year of College in Computer Science for my Java class, the Greatest Teacher project's purpose was to develop an application that allows a user to rate teachers and view their performances using Axios for the HTTP requests and React libraries for the UI. This is the front-end documentation of the project.
 
 ## Table of Contents
 - [Project Description](#project-description)
